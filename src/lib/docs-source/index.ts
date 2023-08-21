@@ -10,18 +10,17 @@ export async function getAllDocs() {
     crlfDelay: Infinity,
   });
 
-  const links: string[] = [];
+  const titles: string[] = [];
   for await (const line of linesReader) {
-    if (line && !line.match(/^ *$/)) {
-      links.push(line);
+    const trimmed = line?.trim();
+    if (trimmed && trimmed !== "") {
+      titles.push(line);
     }
   }
 
+  const wikipediaDocs = await getWikipediaDocs(titles);
   const splitter = new RecursiveCharacterTextSplitter();
 
-  const wikipediaDocs = await getWikipediaDocs({
-    links,
-    splitter,
-  });
-  return wikipediaDocs;
+  const splittedDocs = await splitter.splitDocuments(wikipediaDocs);
+  return splittedDocs;
 }

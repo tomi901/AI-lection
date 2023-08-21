@@ -6,3 +6,5 @@ debug.log
 
 .env
 !.env.template
+
+*.log

@@ -5,7 +5,7 @@ import { FaissStore } from "langchain/vectorstores/faiss";
 import { OpenAI } from "langchain/llms/openai";
 import { vectorStoreDir } from "./init.js";
 
-export async function prompt() {
+export async function prompt(text: string) {
   const embeddings = new OpenAIEmbeddings({
     modelName: "text-embedding-ada-002",
   });
@@ -22,11 +22,12 @@ export async function prompt() {
   });
   console.log("Waiting for answer...");
   const res = await chain.call({
-    query: "Resume cual es la ideología de Patricia Bullrich",
+    query: text,
   });
   console.log({ res });
 }
 
 export default new Command("prompt")
   .description("Initializes vector database")
+  .arguments("<prompt>")
   .action(prompt);
