@@ -12,7 +12,6 @@ export function vectorStoreDir() {
 export async function init() {
   console.log("Loading all docs...");
   const docs = await getAllDocs();
-  return;
 
   const embeddings = new OpenAIEmbeddings({
     modelName: "text-embedding-ada-002",
