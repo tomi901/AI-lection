@@ -22,8 +22,9 @@ export async function prompt(question: string) {
   });
 
   const vectorStoreInfo: VectorStoreInfo = {
-    name: "elecciones_argentina_2023",
-    description: "Las elecciones argentinas 2023 y candidatos a presidente",
+    name: "vectordb_elecciones_argentina_2023",
+    description:
+      "Vector Database. Las elecciones argentinas 2023 y candidatos a presidente",
     vectorStore,
   };
 
@@ -60,6 +61,6 @@ export async function prompt(question: string) {
 }
 
 export default new Command("prompt")
-  .description("Initializes vector database")
+  .description("Prompts a question to the AI")
   .arguments("<prompt>")
   .action(prompt);
