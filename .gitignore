@@ -3,6 +3,7 @@ build
 sandbox
 sand\ box
 debug.log
+db
 
 .env
 !.env.template

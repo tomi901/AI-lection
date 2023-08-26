@@ -6,7 +6,7 @@ import os from "os";
 import path from "path";
 
 export function vectorStoreDir() {
-  return path.join(os.tmpdir(), "ailection-data");
+  return path.join("./db", "ailection-data");
 }
 
 export async function init() {
